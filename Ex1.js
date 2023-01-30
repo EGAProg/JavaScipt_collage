@@ -1,5 +1,5 @@
 "use strict";
-// Ex 1
+// Ex 1 1 способ
 const number = Math.floor(Math.random() * 899) + 100;
 let StrNum = number.toString();
 console.log(number);
@@ -14,6 +14,7 @@ for (let i = 0; i < StrNum.length; i++) {
 }
 console.log("Sum:",SumRez);
 
+// 2 способ (Плохой)
 
 let num1 = number % 10; // Единицы
 let num2 = Math.floor((number % 100) / 10); // Десятки
