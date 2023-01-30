@@ -1,7 +1,6 @@
 "use strict";
 
-function Ex1_FWay()
-{
+function Ex1_FWay(){
     const number = Math.floor(Math.random() * 899) + 100;
     let StrNum = number.toString(); // Переводим Int в String для того, чтобы разбить строку на массив
     console.log(number);
@@ -18,8 +17,7 @@ function Ex1_FWay()
     console.log("Sum:",SumRez);
 }
 
-function Ex1_SWay()
-{
+function Ex1_SWay(){
     const number = Math.floor(Math.random() * 899) + 100;
     console.log(number);
     let num1 = number % 10; // Единицы
@@ -32,8 +30,7 @@ function Ex1_SWay()
     console.log("POW:",pow);
 }
 
-function Ex2()
-{
+function Ex2(){
     const int = Math.floor(Math.random() * 89) + 10;
     console.log("Num before:",int);
     let SInt = int.toString(); // Переводим в строку
@@ -41,19 +38,16 @@ function Ex2()
     let secondNum = SInt[1]; // Присваиваем второй символ
     console.log("Num after:", secondNum+firstNum);
 }
-function Ex3()
-{
+function Ex3(){
     const number1 = Math.random() * 100;
     const number2 = Math.random() * 100;
     console.log("First num:",number1,"\nSecond num:",number2);
     let average = (number1 + number2) / 2; // Среднее арефмитическое
     let Frac =(number1 + number2) / 2 % 1; // Дробная часть
     
-    console.log("Fractional part of a number: " + Frac, "\nAverage:", average);
-
+    console.log("Fractional part of a number: " + Frac);
 }
-function Ex4()
-{
+function Ex4(){
     const number1 = Math.floor(Math.random() * -2998) + 1999;
     const number2 = Math.floor(Math.random() * -2998) + 1999;
     const number3 = Math.floor(Math.random() * -2998) + 1999;
@@ -72,34 +66,31 @@ function Ex4()
     console.log("Power averange: ",powAver);
 }
 
-
-
-const readline = require('readline');
-const rl = readline.createInterface({input: process.stdin, output: process.stdout}); 
-
-
-/* 
-    Я захотел ввод с клавиатуры, я его сделал. 
-    ПОЧЕМУ НЕЛЬЗЯ СДЕЛАТЬ НОРМАЛЬНУЮ ФУНКЦИЮ ВВОДА С КЛАВИАТУРЫ, ЮЗЕР МОГ ВЫБРАТЬ ФУНКЦИЮ. 
-    ВМЕСТО ИГРЫ НА ГИТАРЕ Я ДЕЛАЛ И ГУГЛИЛ ЭТО!
-*/
-
-let quest = "";
-console.log("Press 1 to Ex1, 2 to Ex2, 3 to Ex3, 4 to Ex4");
-rl.question("Enter your choice: ", (quest) => 
-{
-    switch(quest)
-    {
-        case 1:
-            Ex1_FWay();
-        case 2:
-            Ex2();
-        case 3:
-            Ex3();
-        case 4:
-            Ex4();
-    }
-    rl.close();
-})
+while(true){
     
     
+    const readline = require('readline');
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    console.log("Press 1 to Ex1, 2 to Ex2, 3 to Ex3, 4 to Ex4");
+    rl.question("Enter your choice: ", (answer) => {
+
+        switch(quest){
+            case 1:
+                Ex1_FWay();
+            case 2:
+                Ex2();
+            case 3:
+                Ex3();
+            case 4:
+                Ex4();
+        }
+        rl.close();
+    })
+    
+    
+}
