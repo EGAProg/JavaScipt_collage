@@ -5,7 +5,7 @@ function Ex1_FWay()
     const number = Math.floor(Math.random() * 899) + 100;
     let StrNum = number.toString(); // Переводим Int в String для того, чтобы разбить строку на массив
     console.log(number);
-    let PowRez = 1; // = 1 для того, чтобы не было деления на нуль
+    let PowRez = 1; // = 1 для того, чтобы не было умножения на нуль
     let SumRez = 0;
     for (let i = 0; i < StrNum.length; i++) {
         PowRez = PowRez * Number(StrNum[i]); // Number() переводит String в Int
@@ -26,10 +26,10 @@ function Ex1_SWay()
     let num2 = Math.floor((number % 100) / 10); // Десятки
     let num3 = Math.floor(number / 100); // Сотни
     let sum = num1 + num2 + num3;
-    let pow = num1 * num2 * num3;
+    let mult = num1 * num2 * num3;
 
     console.log("SUM:",sum);
-    console.log("POW:",pow);
+    console.log("POW:",mult);
 }
 
 function Ex2()
@@ -49,7 +49,7 @@ function Ex3()
     let average = (number1 + number2) / 2; // Среднее арефмитическое
     let Frac =(number1 + number2) / 2 % 1; // Дробная часть
     
-    console.log("Fractional part of a number: " + Frac, "\nAverage:", average);
+    console.log("Fractional part of a number: " + Frac, "\nAverage number:", average);
 
 }
 function Ex4()
