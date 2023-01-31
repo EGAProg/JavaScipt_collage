@@ -4,16 +4,16 @@
 ////////////////////////////////////////////////////////////////////////
 function Coordinate() 
 {
-    const x1 = 4;
+    const x1 = -4;
     const y1 = 1;
-    const x2 = 6;
+    const x2 = -6;
     const y2 = 10;
 
     const sideA = x2 - x1;
     const sideB = y2 - y1;
 
     const square = sideA * sideB;
-    console.log("Square is :",square);
+    console.log("Square is :",Math.abs(square));
 }
 
 function Rounds()
