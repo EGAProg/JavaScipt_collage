@@ -1,6 +1,5 @@
 "use strict";
-// Ex 1 
-// 1 способ (человеческий, пробежаться по двум массивом используя цикл)
+// Ex 1
 console.log("...First way...\n");
 const number = Math.floor(Math.random() * 899) + 100;
 let StrNum = number.toString(); // Переводим Int в String для того, чтобы разбить строку на массив
@@ -16,8 +15,7 @@ for (let i = 0; i < StrNum.length; i++) {
     SumRez = SumRez + Number(StrNum[i]); // Number() переводит String в Int
 }
 console.log("Sum:",SumRez);
-
-// 2 способ (Плохой, делить без остатка)
+// Второй способ
 console.log("...Second way...\n");
 let num1 = number % 10; // Единицы
 let num2 = Math.floor((number % 100) / 10); // Десятки
