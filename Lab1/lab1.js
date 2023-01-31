@@ -40,8 +40,10 @@ function Rounds()
 function OddNumbers()
 {
     const oddRandom1 = Math.floor(Math.random() * 9999);
-    let oddFinal = oddRandom1 / 2 + 3;
-    console.log("Odd number is :", Math.round(oddFinal));
+    const oddRandom2 = Math.floor(Math.random() * 9999);
+    let oddFinal = (oddRandom1 - oddRandom2) * 2 - 1;
+
+    console.log("Odd number is :", Math.abs(Math.round(oddFinal)));
 }
 
 console.log("-----------------------------First EX--------------------------------");
