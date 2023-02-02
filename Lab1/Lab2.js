@@ -5,10 +5,6 @@ function FitstEx() {
     const min = 4;
 
     password.length > min && (password.includes("_") == true || password.includes())? console.log("Пароль надежный") : console.log("Пароль ненадежный");
-
-     
-
-
 }
 
 function SecondEx() {
