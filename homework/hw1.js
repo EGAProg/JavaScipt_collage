@@ -1,6 +1,6 @@
 "use strict";
 function FirstWork() {
-    console.log("...Первое задание...")
+    console.log("...Первое задание...");
     const fString = "robin_singh@example.com";
     let sString = fString.search("@");
     let tString = fString.slice(0, sString);
@@ -10,11 +10,8 @@ function FirstWork() {
     console.log(secondTest, "...", finString,"\n");
 }
 function SecondWork() {
-    console.log("...Второе задание...")
+    console.log("...Второе задание...");
     const str = "JavaScript Exercises"; // Смотрел ТЗ
-    //let std = str.replace(" ", "");
-    //let string = std.replace("Java", "java");
-    
     let idSpace = str.indexOf(" ");
     let fWord = str.slice(0, idSpace);
     let sWord = str.slice(idSpace);
@@ -27,12 +24,13 @@ function SecondWork() {
 }
 
 function ThirdWork() {
-    console.log("...Третье задание...")
+    console.log("...Третье задание...");
     let str = "У лукоморья дуб зеленый, золотая цепь на дубе том. И днем и ночью кот ученый все ходит по цепи кругом";
     const maxLength = 25;
+    let string = String("");
     let output = String("");
     if (str.length > maxLength) {
-        let string = str.slice(0, maxLength);
+        string = str.slice(0, maxLength);
         output = string + "...";
     }
     else {
