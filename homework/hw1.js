@@ -36,6 +36,7 @@ function ThirdWork() {
     else {
         output = string;
     }
+
     console.log(output);
 }
 
