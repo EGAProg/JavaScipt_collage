@@ -18,7 +18,6 @@ function SecondWork() {
     let idSpace = str.indexOf(" ");
     let fWord = str.slice(0, idSpace);
     let sWord = str.slice(idSpace);
-
     let fChar = fWord.slice(0, 1);
     fWord = fWord.slice(1);
     let fLower = fChar.toLowerCase();
