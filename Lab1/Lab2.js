@@ -4,16 +4,12 @@ function FitstEx() {
     const password = "938";
     const min = 4;
 
-    password.length > min && (password.includes("_") == true || password.includes())? console.log("Пароль надежный") : console.log("Пароль ненадежный");
-
-     
-
-
+    password.length > min && (password.includes("_") == true || password.includes("-"))? console.log("Пароль надежный") : console.log("Пароль ненадежный");
 }
 
 function SecondEx() {
-    const name = "Egor";
-    const surname = "Gysev";
+    const name = "EgOr";
+    const surname = "GySev";
 
     let fChar = name.slice(0, 1);
     let fName = name.slice(1);
@@ -29,7 +25,6 @@ function SecondEx() {
     let sEdName = sChar + sName;
     let LastName = sEdName.replace(" ", "");
 
-    console.log(LastName);
     
     if (name == FirstName && surname == LastName) {
         console.log("Без изменений");
