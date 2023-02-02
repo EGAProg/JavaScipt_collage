@@ -8,24 +8,13 @@ function FitstEx() {
 }
 
 function SecondEx() {
-    const name = "EgOr";
-    const surname = "GySev";
-
-    let fChar = name.slice(0, 1);
-    let fName = name.slice(1);
-    fChar = fChar.toUpperCase();
-    fName = fName.toLowerCase();
-    let EdName = fChar + fName;
-    let FirstName = EdName.replace(" ", "");
-
-    let sChar = surname.slice(0, 1);
-    let sName = surname.slice(1);
-    sChar = sChar.toUpperCase();
-    sName = sName.toLowerCase();
-    let sEdName = sChar + sName;
-    let LastName = sEdName.replace(" ", "");
-    
-    if (name == FirstName && surname == LastName) {
+    const name = "Egor";
+    const surname = "Gysev";
+    let firstName = name[0].toUpperCase() + name.slice(1).toLowerCase()
+    let lastName = surname[0].toUpperCase() + surname.slice(1).toLowerCase()
+    console.log(firstName);
+    console.log(lastName);
+    if (name == firstName && surname == lastName) {
         console.log("Без изменений");
     }
     else {
