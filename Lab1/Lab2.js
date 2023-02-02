@@ -24,7 +24,6 @@ function SecondEx() {
     sName = sName.toLowerCase();
     let sEdName = sChar + sName;
     let LastName = sEdName.replace(" ", "");
-
     
     if (name == FirstName && surname == LastName) {
         console.log("Без изменений");
@@ -32,9 +31,6 @@ function SecondEx() {
     else {
         console.log("Изменено");
     }
-
-
-
 }
 FitstEx();
 SecondEx();
