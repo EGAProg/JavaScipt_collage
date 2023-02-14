@@ -31,16 +31,37 @@ function cardPasses(){
     const cardsHold = [];
     let i;
     for (i = 0; i < cards.length; i++) {
-        if (cards[i] == "Туз" || cards[i] == "Король") {
-            cardsHold.push(cards[i]);
-        }
+        if (cards[i] !== "Туз" && cards[i] !== "Король") {
+            continue;
+        } else cardsHold.push(cards[i]);
     }
     console.log(cardsHold);
 
 }
+
+function trashHolder() {
+    let cup = 250;
+    const glup = 30;
+    let i = 1;
+    while (cup > 0) {
+        cup -= glup;
+        console.log(`В кружке осталось ${cup} миллилитров`);
+        if (glup > cup){ 
+            cup = 0; 
+            console.log(`В кружке осталось ${cup} миллилитров`);
+        }
+        i++;
+    }
+    console.log("Чай выпит");
+
+    console.log(`Вы выпили чай за ${i} глотков`);
+}
+
 console.log("______________________________№1__________________________________");
 oddNumeric();
 console.log("______________________________№2__________________________________");
 cardFinder();
 console.log("______________________________№3__________________________________");
 cardPasses();
+console.log("______________________________№4__________________________________");
+trashHolder();
