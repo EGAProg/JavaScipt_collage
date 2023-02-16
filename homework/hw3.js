@@ -17,12 +17,10 @@ function shitPost() {
     let j = str.length - 1;
     let revStr = [];
     let outStr;
-
     for (let i = 0; i < str.length; i++) {
         revStr.push(str[j])
         j--;
     }
-
     outStr = revStr.join('');
     console.log(str);
     console.log(outStr);
@@ -64,8 +62,6 @@ function daysCount(){
             console.log(`${i} января, ${week}`);
         }
     }
-
-    
 }
 
 
