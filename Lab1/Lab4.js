@@ -45,9 +45,7 @@ function dayOfTheWeek() {
     let dayNum = 12;
     
     const dayNames = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-
-    // dayNames.length = 7, daysInMonth.length = 31. Надо сделать так, чтобы нормально выводился день недели.
-    // Как?
+    
     try {
         for (let i = 1; i <= dayNum; i++) {
             if (dayNum > dayNames.length) {
@@ -58,7 +56,7 @@ function dayOfTheWeek() {
             }
         }
     }
-    catch (e) {console.error(e)}
+    catch (e) {console.log(e)}
 
 }
 console.log("______________________________");
