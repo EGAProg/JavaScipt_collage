@@ -48,7 +48,6 @@ function dayOfTheWeek() {
 
     // dayNames.length = 7, daysInMonth.length = 31. Надо сделать так, чтобы нормально выводился день недели.
     // Как?
-    // Попробую цикл по длинне массива dayNames
     try {
         for (let i = 1; i <= dayNum; i++) {
             if (dayNum > dayNames.length) {
