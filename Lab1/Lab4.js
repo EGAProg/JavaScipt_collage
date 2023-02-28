@@ -43,6 +43,7 @@ function twoNumbers() {
 
 function dayOfTheWeek() {
     let dayNum = 12;
+    
     const dayNames = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 
     try {
