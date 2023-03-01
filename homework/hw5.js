@@ -1,5 +1,7 @@
 "use strict";
+
 ////////////////////////////////////////////////////////////////
+
 function isNumberInRange(number) {
     return number > 0 && number < 10;
 }
@@ -14,7 +16,9 @@ function filterNumbers(arr) {
 }
 let array = [83, 927, 1, 73, 15, 8, 27, 6, 0, 5];
 console.log(filterNumbers(array));
+
 ////////////////////////////////////////////////////////////////
+
 function age(num) {
     if (num <= 17) {
       return "ребенок";
