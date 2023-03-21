@@ -1,21 +1,40 @@
 "use strict";
 
-function isNumberInRange(number) {
-    return number > 0 && number < 10;
-}
-function filterNumbers(arr) {
-    let newArr = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (isNumberInRange(arr[i])) {
-            newArr.push(arr[i]);
+const Select = document.createElement("select");
+const Opt = document.createElement("option");
+
+const arr = [{
+            value: "Stuff1", 
+            label: "Tag1"
+        },
+        {
+            value: "Stuff2", 
+            label: "Tag2"
+        },
+        {
+            value: "Stuff3", 
+            label: "Tag3",
+        }];
+
+function fillList(arr, value) {
+    
+    document.body.appendChild(Select);
+    arr.forEach(function(element) {
+        Opt.value = element.value;
+        Opt.innerHTML = element.label;
+        Select.appendChild(Opt)
+        if (Opt.value === value) {
+            Opt.setAttribute('selected', true);
         }
-    }
-    return newArr;
+    });
+    return Select;
 }
 
-function main() {
-    let array = [83, 927, 1, 73, 15, 8, 27, 6, 0, 5];
-    console.log(filterNumbers(array));
+
+
+function _main_() {
+    fillList(arr, "Tag1");
+    
 }
 
-main();
+_main_();
