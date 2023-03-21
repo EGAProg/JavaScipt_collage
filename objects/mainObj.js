@@ -7,7 +7,6 @@ let sqr = [document.getElementsById("sqr1"),
         document.getElementsById("sqr2"),
         document.getElementsById("sqr3"),
         document.getElementsById("sqr4")];
-
 function handlerOver() {
     square.style.backgroundColor = "Green";
 }
@@ -15,6 +14,9 @@ function handlerOut() {
     square.style.backgroundColor = "Red";
 }
 
+document.addEventListener("click", e => { // делигирование
+    console.log(e);
+});
 
 function colorCounters() {
 
