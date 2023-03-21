@@ -3,10 +3,10 @@
 const Body = document.body;
 let inp = document.getElementById("inp");
 let square = document.getElementsByClassName("square");
-let sqr1 = document.getElementsById("sqr1");
-let sqr2 = document.getElementsById("sqr2");
-let sqr3 = document.getElementsById("sqr3");
-let sqr4 = document.getElementsById("sqr4");
+let sqr = [document.getElementsById("sqr1"),
+        document.getElementsById("sqr2"),
+        document.getElementsById("sqr3"),
+        document.getElementsById("sqr4")];
 
 function handlerOver() {
     square.style.backgroundColor = "Green";
