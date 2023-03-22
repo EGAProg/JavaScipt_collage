@@ -2,8 +2,8 @@
 
 // Задание 1
 
-let btnCount = document.getElementById("btnCount");
-let counter = document.getElementById("counter");
+let btnCount = document.querySelector("#btnCount");
+let counter = document.querySelector("#counter");
 
 function btnClick() {
     if (counter.value != 0) {  
@@ -25,18 +25,18 @@ function buttonCreate(name) {
 
 // Задание 2
 
-let timer = document.getElementById("timer");
-let timeInput = document.createElement("timeInput");
+let timerH = document.querySelector("#timer");
+let timeInputH = document.querySelector("#timeInput");
 
 function inputUpdate() {
-    let timerId
-    const tick = 300;
+    let timerId;
+    let tick = 300;
     let tickTime = tick;
+    timerH.innerHTML = timeInputH.value;
     if (tickTime != 0) {
         timerId = setTimeout(function() {
-            timer = timeInput;
-            if (timer != timeInput) timer = timeInput;
-            tickTime-=1;
+            if (timerH.innerHTML != timeInputH.value) timerH.innerHTML = timeInputH.value;
+            tickTime -= 1;
         }, tick);
     }
     else {
