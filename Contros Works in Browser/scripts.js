@@ -1,5 +1,5 @@
 "use strict";
-
+// Задание 1
 let usersArray= [   
                     {name:"John", login:"OPPYM", password:"3223322"}, 
                     {name:"Max", login:"Maxwell", password:"paninpes111"}, 
@@ -18,6 +18,11 @@ function createLoginForm(){
         alert('Неверный логин или пароль');
     }
 }
+
+// Задание 2
+
+
+
 
 function main() {
     createLoginForm();
