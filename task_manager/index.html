@@ -8,19 +8,12 @@
     <title>Task manager</title>
 </head>
 <body>
-    <div class="Wrapper container inner">   <!-- main page class -->
+    <div class="Wrapper inner">   <!-- main page class -->
         <input type="text" class="hole"  id="placeholder" placeholder="Place task">
         <button type="button" id="placeBtn" class="btn btn-primary">Place</button>
-
-        <!-- <div class="container inner"> 
-            <input type="text" disabled class="hole" id="hole">
-            <button type="button" class="btn btn-done">Done</button>
-            <button type="button" class="btn btn-del">Delete</button>
-        </div>-->
-
+        
+        <div class="tasks"></div>
     </div>
-    
-
-    <script src="./main.js"></script> <!-- I've place it here 'cuz "defer" not working-->
+    <script src="./main.js" defer></script> <!-- I've place it here 'cuz "defer" not working-->
 </body>
 </html>

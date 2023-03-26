@@ -1,9 +1,7 @@
 .Wrapper {
     width: 900px;
 }
-.container {
-    width: 900px;
-}
+
 body {
     
     width: 100%;
@@ -28,17 +26,11 @@ body {
     box-shadow: 0 0 0 2px #a5b3d3;
 }
 
-.btn-done {
-    background-color: #00ff00;
-}
 .btn-del {
     background-color: #ff0000;
 }
 .btn-del:hover {
     background-color: #ab0000;
-}
-.btn-done:hover {
-    background-color: #00ab00;
 }
 
 .hole {
@@ -62,4 +54,32 @@ body {
     margin-right: 5px;
     margin-bottom: 5px;
     margin-left: 5px;
+}
+
+
+.tasks{
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    background-color: #ffffff;
+    padding: 30px 20px;
+    margin-top: 10px;
+}
+
+.task{
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #939697;
+    cursor: pointer;
+    background-color: #c5e1e6;
+    height: 50px;
+    margin-bottom: 8px;
+    padding: 5px 10px;
+    display: flex;
+}
+.task span{
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    font-weight: 400;
 }
