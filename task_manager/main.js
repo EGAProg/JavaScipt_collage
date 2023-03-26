@@ -31,3 +31,8 @@ function addPlaceholder(placeValue) {
 function removePlaceholder(id) {
     return;
 }
+
+function main () {
+    return;
+}
+main();
