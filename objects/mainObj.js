@@ -2,11 +2,15 @@
 
 const Body = document.body;
 let inp = document.getElementById("inp");
-let square = document.getElementsByClassName("square");
-let sqr = [document.getElementsById("sqr1"),
-        document.getElementsById("sqr2"),
-        document.getElementsById("sqr3"),
-        document.getElementsById("sqr4")];
+let square = document.querySelector(".square");
+
+let sqr = [document.getElementById("sqr1"),
+        document.getElementById("sqr2"),
+        document.getElementById("sqr3"),
+        document.getElementById("sqr4")];
+
+
+
 function handlerOver() {
     square.style.backgroundColor = "Green";
 }
@@ -14,15 +18,14 @@ function handlerOut() {
     square.style.backgroundColor = "Red";
 }
 
-document.addEventListener("click", e => { // делигирование
-    console.log(e);
-});
-
-function colorCounters() {
-
+function click() {
+    for (let i = 0; i < square.length; i++) {
+        square.addEventListener("click", (e) => e.style.backgroundColor = "green");
+    }
 }
-
 function buttonClick() {}
+
+
 function buttonBlocked() {
     inp.style.display = "none";
 }
@@ -47,11 +50,11 @@ function _main_(){
     buttonCreate("Click");
     buttonCreate("Block");
     buttonCreate("Unblock");
-
+    click();
 }
 _main_();
 
-
+//задание 8 смена цветов
 
 // Задание 7
 // function handlerOver() {
