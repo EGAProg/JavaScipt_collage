@@ -2,59 +2,73 @@
 
 const Body = document.body;
 let inp = document.getElementById("inp");
-let square = document.querySelector(".square");
+let square = document.querySelectorAll(".square");
+let div = document.querySelector(".holder");
+// let sqr = [document.getElementById("sqr1"),
+//         document.getElementById("sqr2"),
+//         document.getElementById("sqr3"),
+//         document.getElementById("sqr4")];
 
-let sqr = [document.getElementById("sqr1"),
-        document.getElementById("sqr2"),
-        document.getElementById("sqr3"),
-        document.getElementById("sqr4")];
 
+// function handlerOver() {
+//     square.style.backgroundColor = "Green";
+// }
+// function handlerOut() {
+//     square.style.backgroundColor = "Red";
+// }
 
+// function click() {
+//     for (let i = 0; i < sqr.length; i++) {
+//         sqr[i].addEventListener("click", (e) => e.style.backgroundColor = "green");
+//     }
+// }
 
-function handlerOver() {
-    square.style.backgroundColor = "Green";
+function handler() {
+    div.addEventListener("click", (e) => {
+        if (e.target.classList.contains("square")) {
+            square.forEach((sqr) => {
+                if (sqr === e.target) sqr.classList.add("Green");
+                else {
+                    sqr.classList.remove("Green");
+                }
+            });
+        }
+    });
 }
-function handlerOut() {
-    square.style.backgroundColor = "Red";
-}
 
-function click() {
-    for (let i = 0; i < square.length; i++) {
-        square.addEventListener("click", (e) => e.style.backgroundColor = "green");
-    }
-}
-function buttonClick() {}
+// function buttonClick() {}
 
 
-function buttonBlocked() {
-    inp.style.display = "none";
-}
-function buttonUnblocked() {
-    inp.style.display = "block";
-}
-function buttonCreate(name) {
-    let btn = document.createElement("button");
-    Body.append(btn);
-    btn.innerText = name;
-    if (name === "Block")
-        btn.addEventListener("click", buttonBlocked);
-    else if (name === "Unblock")
-        btn.addEventListener("click", buttonUnblocked);
-    else if (name === "Click") 
-        btn.addEventListener("click", buttonClick);
+// function buttonBlocked() {
+//     inp.style.display = "none";
+// }
+// function buttonUnblocked() {
+//     inp.style.display = "block";
+// }
+// function buttonCreate(name) {
+//     let btn = document.createElement("button");
+//     Body.append(btn);
+//     btn.innerText = name;
+//     if (name === "Block")
+//         btn.addEventListener("click", buttonBlocked);
+//     else if (name === "Unblock")
+//         btn.addEventListener("click", buttonUnblocked);
+//     else if (name === "Click") 
+//         btn.addEventListener("click", buttonClick);
 
-    square.addEventListener("click", handlerOver);
-    square.addEventListener("click", handlerOut);
-}
+//     square.addEventListener("click", handlerOver);
+//     square.addEventListener("click", handlerOut);
+// }
 function _main_(){
-    buttonCreate("Click");
-    buttonCreate("Block");
-    buttonCreate("Unblock");
-    click();
+//     buttonCreate("Click");
+//     buttonCreate("Block");
+//     buttonCreate("Unblock");
+//     click();
+    handler();
 }
 _main_();
 
-//задание 8 смена цветов
+// задание 8 смена цветов
 
 // Задание 7
 // function handlerOver() {

@@ -54,13 +54,12 @@ function daysCount(){
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let week;
     let arr = [];
-
     for (let i = 1; i <= 31; i++) {
         arr.push(i);
         for (let j = 0; j < days.length; j++) {
             week = days[j];
-            console.log(`${i} января, ${week}`);
         }
+        console.log(`${i} января, ${week}`);
     }
 }
 
