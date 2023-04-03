@@ -11,7 +11,7 @@ function btnClick() {
         alert("Please Enter a Task")
     }
     else {
-        // Далее я создаю div содержаший span и кнопку
+        // Create a new div and add the placeholder element
         taskPlace.innerHTML += ` 
             <div class="task">
                 <span id="taskname">
@@ -23,7 +23,7 @@ function btnClick() {
         `;
 
         placeholder.value = '';
-        let taskDel = document.querySelectorAll('#btnDel'); // Делаем тут, т.к. кнопку удаления мы создали не в HTML файле, а в JS коде
+        let taskDel = document.querySelectorAll('#btnDel'); // Added here because I'm created this btn in innerHTML
         let taskDone = document.querySelectorAll('#btnDone');
         for (let i = 0; i < taskDel.length; i++) {
             taskDel[i].onclick = function() {
@@ -33,7 +33,7 @@ function btnClick() {
         }
         for (let i = 0; i < taskDone.length; i++) {
             taskDone[i].onclick = function() {
-                this.parentNode.style.backgroundColor = "#47ff8e";
+                this.parentNode.style.backgroundColor = "#47ff8e"
             }
         }
     }
