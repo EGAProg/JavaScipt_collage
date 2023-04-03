@@ -21,12 +21,14 @@ function btnClick() {
                 <button type="button" id="btnDel" class="btn btn-del">Delete</button>
             </div>
         `;
+
         placeholder.value = '';
         let taskDel = document.querySelectorAll('#btnDel'); // Делаем тут, т.к. кнопку удаления мы создали не в HTML файле, а в JS коде
         let taskDone = document.querySelectorAll('#btnDone');
         for (let i = 0; i < taskDel.length; i++) {
             taskDel[i].onclick = function() {
-                this.parentNode.remove();
+                let result = confirm("Delete task?");
+                if(result) this.parentNode.remove();
             }
         }
         for (let i = 0; i < taskDone.length; i++) {
