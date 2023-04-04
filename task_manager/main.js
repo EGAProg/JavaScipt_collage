@@ -1,43 +1,78 @@
 "use strict";
 let Body = document.body;
-let myStorage = window.localStorage; // Заготовка на будущее :(
 
-
-
+let obj = [];
 ////////////////////////////////////////////////////////////////
+let i = 1;
+function retreatObject(name) {
+    for (let j = 0; j < localStorage.length; j++) {
+        let task = JSON.parse(localStorage.getItem(name+=i));
+        let taskPlace = document.querySelector(`.tasks`);
+        taskPlace.innerHTML += ` 
+            <div class="task" id="${name}">
+                <span class="taskname">
+                    ${task}
+                </span>
+                <button type="button" id="btnDone" class="btn btn-done">Done</button>
+                <button type="button" id="btnDel" class="btn btn-del">Delete</button>
+            </div>
+        `;
+    }  
+}
 
-function createToDo(name) { // Тут где-то ошибка. Не оттуда и не туда отправляются значения из placeholder.value при нажатии на кнопку
+function createToDo(ownerName) { // Тут где-то ошибка. Не оттуда и не туда отправляются значения из placeholder.value при нажатии на кнопку
     Body.innerHTML += 
         `<div class="Wrapper inner">
             <div class="placeholder">
-                <input type="text" class="hole" id="${name}" placeholder="Place task">
-                <button type="button" id="placeBtn${name}" class="btn">Place</button>
-                <p>${name}</p>
+                <input type="text" class="hole" id="${ownerName}" placeholder="Place task">
+                <button type="button" id="placeBtn${ownerName}" class="btn">Place</button>
+                <p>${ownerName}</p>
             </div>
-            <div class="tasks"></div>
+            <div class="tasks" id="${ownerName}"></div>
         </div>`;
-    let btnPlace = document.querySelector(`#placeBtn${name}`);
-    let placeholder = document.querySelector(`#${name}`);
+    let btnPlace = document.querySelector(`#placeBtn${ownerName}`);
+    let placeholder = document.querySelector(`#${ownerName}`);
     let taskPlace = document.querySelector(`.tasks`);
+    
+    document.addEventListener("DOMContentLoaded", (event) => {
+        retreatObject(ownerName);
+    });
+    
 
     btnPlace.addEventListener("click", () => {
+        
         if (placeholder.value.length == 0) {
             alert("Please Enter a Task")
         }
         else {
             // Create a new div and add the placeholder element
+            
             taskPlace.innerHTML += ` 
-                <div class="task">
-                    <span id="taskname">
+                <div class="task" id="${ownerName}">
+                    <span class="taskname">
                         ${placeholder.value}
                     </span>
                     <button type="button" id="btnDone" class="btn btn-done">Done</button>
                     <button type="button" id="btnDel" class="btn btn-del">Delete</button>
                 </div>
             `;
-            myStorage.setItem(placeholder.value);
+            
+            let arr = [];
+
+            let storageArr = [
+                {
+                    key: key,
+                    holder: placeholder.value,
+                    done: false, // if done then true
+                }
+            ];
+            
+            storageArr.push({key: ownerName, value: placeholder.value});
+            localStorage.setItem(storageArr.key, JSON.stringify(storageArr.value ));
+           
             console.log(placeholder.value)
             placeholder.value = '';
+            
 
             let taskDel = document.querySelectorAll('#btnDel'); // Added here because I'm created this btn in innerHTML
             let taskDone = document.querySelectorAll('#btnDone');
@@ -45,8 +80,10 @@ function createToDo(name) { // Тут где-то ошибка. Не оттуд�
             for (let i = 0; i < taskDel.length; i++) {
                 taskDel[i].onclick = function() {
                     let result = confirm("Delete task?");
-                    myStorage.removeItem(placeholder.value);
-                    if(result) this.parentNode.remove();
+                    if(result) {
+                        this.parentNode.remove();
+                        localStorage.removeItem(ownerName, placeholder.value);
+                    }
                 }
             }
             for (let i = 0; i < taskDone.length; i++) {
@@ -57,10 +94,10 @@ function createToDo(name) { // Тут где-то ошибка. Не оттуд�
         }
     });
 }
+i++;
+
 
 function main() {
-    createToDo("Egor");
-    createToDo("Vova");
-    createToDo("Kirill");
+    createToDo("OPPYM");
 }
 main();
