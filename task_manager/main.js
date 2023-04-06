@@ -1,31 +1,129 @@
 "use strict";
 let Body = document.body;
 
-let obj = [];
-////////////////////////////////////////////////////////////////
-let i = 1;
-function retreatObject(name) {
-    for (let j = 0; j < localStorage.length; j++) {
-        let task = JSON.parse(localStorage.getItem(name+=i));
-        let taskPlace = document.querySelector(`.tasks`);
-        taskPlace.innerHTML += ` 
-            <div class="task" id="${name}">
+class Storage { // конструктор объекта для хранения в localstorage
+    constructor(value = "", complited = false) {
+        this.value = value;
+        this.complited = complited;
+    }
+};
+window.arrayOfObj = new Array(); // Массив для хранения объектов в localstorage
+let daylyObj = [
+    {
+        value: "Купить молока",
+        complited: false,
+    },
+    {
+        value: "Помыть посуду",
+        complited: false,
+    },
+    {
+        value: "Сделать JS",
+        complited: false,
+    }
+];
+
+function loadTasks(name) { // ERR:Cannot read properties of undefined (reading 'value')
+    console.log("Loading tasks...");
+    console.log(name);
+    let counter = ("Counter"+name)
+    console.log(arrayOfObj.length);
+    console.log(daylyTasksArray)
+    let taskPlace = document.querySelector(`.tasks`);
+    for (let i = 0; i < daylyObj.length; i++) {
+        taskPlace.innerHTML += `
+            <div class="task"">
                 <span class="taskname">
-                    ${task}
+                    ${daylyObj[i].value}
                 </span>
                 <button type="button" id="btnDone" class="btn btn-done">Done</button>
                 <button type="button" id="btnDel" class="btn btn-del">Delete</button>
-            </div>
-        `;
-    }  
+            </div>`;
+        controlBtns(name, arrayOfObj, daylyObj);
+    }
+    if (localStorage.length > 0 && name in localStorage) {
+        for (let j = 0; j < counter.length; j++) { // array of tasks = 0, почему?
+            let task = JSON.parse(localStorage.getItem(name)); // Возвращает объект
+            let val = Object.values(task);
+            taskPlace.innerHTML += `
+                <div class="task"">
+                    <span class="taskname">
+                        ${val[j].value}
+                    </span>
+                    <button type="button" id="btnDone" class="btn btn-done">Done</button>
+                    <button type="button" id="btnDel" class="btn btn-del">Delete</button>
+                </div>`;
+            controlBtns(name, arrayOfObj, task);
+        }
+    }
 }
 
-function createToDo(ownerName) { // Тут где-то ошибка. Не оттуда и не туда отправляются значения из placeholder.value при нажатии на кнопку
-    Body.innerHTML += 
-        `<div class="Wrapper inner">
+function controlBtns(name, array, obj=null, value) {
+    let counterName = ("Counter"+name);
+    let taskDel  = document.querySelectorAll('#btnDel');
+    let taskDone = document.querySelectorAll('#btnDone');
+    for (let i = 0; i < taskDel.length; i++) {
+        taskDel[i].onclick = function() {
+        let result = confirm("Delete task?");
+            if(result) {
+                this.parentNode.remove();
+                let task = JSON.parse(localStorage.getItem(name));
+                let counter = JSON.parse(localStorage.getItem(counterName));
+                localStorage.removeItem(counterName);
+                JSON.stringify(counterName, JSON.stringify(counter-1));
+                let indexArray = task.indexOf(obj);
+                if (indexArray > -1) { // only splice array when item is found
+                    array.splice(index, 1); // 2nd parameter means remove one item only
+                  }
+                console.log(array);
+                localStorage.setItem(name, JSON.stringify(array));
+                
+            }
+        }
+    }
+    for (let i = 0; i < taskDone.length; i++) {
+        taskDone[i].onclick = function() {
+            this.parentNode.style.backgroundColor = "#47ff8e"
+            let done = JSON.parse(localStorage.getItem(name));
+            localStorage.removeItem(name);
+            
+            done.value = value;
+            done.complited = true;
+            arrayOfObj.push(done)
+            localStorage.setItem(name, JSON.stringify(arrayOfObj));
+        }
+    }
+}
+
+function placeTask(taskPlace, input, name) {
+    taskPlace.innerHTML += `
+        <div class="task">
+            <span class="taskname">
+                ${input.value}
+            </span>
+            <button type="button" id="btnDone" class="btn btn-done">Done</button>
+            <button type="button" id="btnDel" class="btn btn-del">Delete</button>
+        </div>`;
+        
+        let lstorage = new Storage(input.value);
+        arrayOfObj.push(lstorage)
+        localStorage.setItem(name, JSON.stringify(arrayOfObj)); //send array of Objects to localStorage
+        for (let i = 0; i < arrayOfObj.length; i++) {
+            localStorage.setItem("Counter"+name, i+1);
+        }
+        console.log(input.value)
+        input.value = '';
+        controlBtns(name, arrayOfObj, lstorage, input.value);
+}
+
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA, CYKA!
+
+function createToDo(ownerName) {
+    Body.innerHTML += `
+        <div class="Wrapper inner">
             <div class="placeholder">
                 <input type="text" class="hole" id="${ownerName}" placeholder="Place task">
-                <button type="button" id="placeBtn${ownerName}" class="btn">Place</button>
+                <button type="submit" id="placeBtn${ownerName}" class="btn" >Place</button>
                 <p>${ownerName}</p>
             </div>
             <div class="tasks" id="${ownerName}"></div>
@@ -33,71 +131,13 @@ function createToDo(ownerName) { // Тут где-то ошибка. Не отт
     let btnPlace = document.querySelector(`#placeBtn${ownerName}`);
     let placeholder = document.querySelector(`#${ownerName}`);
     let taskPlace = document.querySelector(`.tasks`);
-    
-    document.addEventListener("DOMContentLoaded", (event) => {
-        retreatObject(ownerName);
+    document.addEventListener("DOMContentLoaded", () => {
+        loadTasks(ownerName, daylyTasksArray);
     });
-    
 
-    btnPlace.addEventListener("click", () => {
-        
-        if (placeholder.value.length == 0) {
-            alert("Please Enter a Task")
-        }
-        else {
-            // Create a new div and add the placeholder element
-            
-            taskPlace.innerHTML += ` 
-                <div class="task" id="${ownerName}">
-                    <span class="taskname">
-                        ${placeholder.value}
-                    </span>
-                    <button type="button" id="btnDone" class="btn btn-done">Done</button>
-                    <button type="button" id="btnDel" class="btn btn-del">Delete</button>
-                </div>
-            `;
-            
-            let arr = [];
+    window.onload = loadTasks(ownerName);
 
-            let storageArr = [
-                {
-                    key: key,
-                    holder: placeholder.value,
-                    done: false, // if done then true
-                }
-            ];
-            
-            storageArr.push({key: ownerName, value: placeholder.value});
-            localStorage.setItem(storageArr.key, JSON.stringify(storageArr.value ));
-           
-            console.log(placeholder.value)
-            placeholder.value = '';
-            
-
-            let taskDel = document.querySelectorAll('#btnDel'); // Added here because I'm created this btn in innerHTML
-            let taskDone = document.querySelectorAll('#btnDone');
-
-            for (let i = 0; i < taskDel.length; i++) {
-                taskDel[i].onclick = function() {
-                    let result = confirm("Delete task?");
-                    if(result) {
-                        this.parentNode.remove();
-                        localStorage.removeItem(ownerName, placeholder.value);
-                    }
-                }
-            }
-            for (let i = 0; i < taskDone.length; i++) {
-                taskDone[i].onclick = function() {
-                    this.parentNode.style.backgroundColor = "#47ff8e"
-                }
-            }
-        }
+    btnPlace.addEventListener("click", () => {   
+        placeTask(taskPlace, placeholder, ownerName);
     });
 }
-i++;
-
-
-function main() {
-    createToDo("OPPYM");
-}
-main();

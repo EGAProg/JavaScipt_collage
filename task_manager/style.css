@@ -98,3 +98,7 @@ body {
     font-weight: 400;
     text-align: center;
 }
+.link {
+    padding-left: 10px;
+    color: #FF00AB
+}
