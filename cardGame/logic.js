@@ -11,13 +11,14 @@ export function logic(wrapper) {
             }
             else if (prevEl.classList.contains("blue") && e.target.classList.contains("blue")) 
             {
-                e.target.style.opacity = 0;
-                prevEl.style.opacity = 0;
+                // e.target.style.opacity = 0;
+                // prevEl.style.opacity = 0;
+                prevEl = "";
             }
             else if (prevEl.classList.contains("pink") && e.target.classList.contains("pink")) 
             {
-                e.target.style.opacity = 0; // opacity = 0 - сделать элемент прозрачным
-                prevEl.style.opacity = 0;
+                // e.target.style.opacity = 0; // opacity = 0 - сделать элемент прозрачным
+                // prevEl.style.opacity = 0;
                 prevEl = "";
             }
             else {
