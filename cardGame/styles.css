@@ -1,0 +1,32 @@
+html {
+    box-sizing: border-box;
+    text-align: center;
+}
+  
+.Wrapper {
+    width: 400px;
+}
+
+.main{
+    width: 416px;
+    height: 416px;
+    outline: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px;
+}
+
+.card {
+    width:  96px;
+    height: 96px;
+    margin: 4px;
+}
+.pink {
+    background-color: #fd6af6;
+}
+.blue {
+    background-color: #6078ff;
+}
+.card_block {
+    background-color: #999;
+} 
