@@ -3,10 +3,6 @@ export function logic(wrapper, timerID) {
     let numberOfCoincidences = 0;
     wrapper.addEventListener("click", function(e) 
     {
-        timerID = setTimeout(() => {
-            alert('Время игры закончилось');
-            window.location.reload();
-        }, 60000);
         if (e.target.classList.contains("card_block")) 
         {
             e.target.classList.remove("card_block");
@@ -30,9 +26,16 @@ export function logic(wrapper, timerID) {
                 prevEl = "";
             }
         }
-        if(numberOfCoincidences == 16) {
+        if(numberOfCoincidences == 8) {
             alert("Good Job!");
+            clearTimeout(timerId);
             window.location.reload();
         }
-    } );    
+    } );
+    
+    timerID = setTimeout(() => {
+        alert('Время игры закончилось');
+        
+        window.location.reload();
+    }, 60000);  
 };
