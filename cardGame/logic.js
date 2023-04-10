@@ -1,8 +1,12 @@
-export function logic(wrapper) {
+export function logic(wrapper, timerID) {
     let prevEl = "";
+    let numberOfCoincidences = 0;
     wrapper.addEventListener("click", function(e) 
     {
-        
+        timerID = setTimeout(() => {
+            alert('Время игры закончилось');
+            window.location.reload();
+        }, 60000);
         if (e.target.classList.contains("card_block")) 
         {
             e.target.classList.remove("card_block");
@@ -13,16 +17,22 @@ export function logic(wrapper) {
             else if (prevEl.classList.contains("blue") && e.target.classList.contains("blue")) 
             {
                 prevEl = "";
+                numberOfCoincidences++;
             }
             else if (prevEl.classList.contains("pink") && e.target.classList.contains("pink")) 
             {
                 prevEl = "";
+                numberOfCoincidences++
             }
             else {
                 prevEl.classList.add("card_block");
                 e.target.classList.add("card_block");
                 prevEl = "";
             }
+        }
+        if(numberOfCoincidences == 16) {
+            alert("Good Job!");
+            window.location.reload();
         }
     } );    
 };
