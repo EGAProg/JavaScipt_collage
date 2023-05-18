@@ -10,6 +10,7 @@ let falkInput = document.getElementById("fackultet");
 let couseInput = document.getElementById("course");
 
 let addStud = document.getElementById("addStudent");
+let findStud = document.getElementById("findInput");
 
 let studbecker = [
     {
@@ -23,7 +24,7 @@ let studbecker = [
         courseCount: 2
     },
     {
-        surname: "Lugigin",
+        surname: "Luginin",
         name: "Kirill",
         lastName: "Alex",
         birthDate: new Date(2005, 09, 20).toLocaleString("ru").slice(0, 10),
@@ -50,7 +51,25 @@ function createTd(tableEl, text) {
     tableEl.append(td);
 }
 
-
+function findStudent() {    
+    let filter, table, tr, td, i, txtValue;
+    
+    filter = findStud.value.toUpperCase();
+    table = document.getElementById("table_id");
+    tr = table.getElementsByTagName("tr");
+  
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
 
 function getFullName(student) {
     return student.surname + "\n" + student.name + "\n" + student.lastName;
@@ -87,10 +106,8 @@ function main() {
     }
 }
 main();
-
+findStud.addEventListener("keyup", findStudent);
 addStud.addEventListener("click", createNewStudent);
-
-
 document.addEventListener('DOMContentLoaded', () => {
 
     const getSort = ({ target }) => {
@@ -112,3 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('#table_id thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
 
 });
+
