@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,26 +11,28 @@
 <body>
     <div class="Wrapper">
         
-        <table>
+        <table id="table_id">
             <thead>
-                <tr>
-                    <th colspan="6">Панель упраления студентами</th>
-                </tr>
-            </thead>
-            <tbody id="tbody">
-                <tr id="trHead">
-                    <td>Фамилия</td>
-                    <td>Имя</td>
-                    <td>Отчество</td>
+                <td>ФИО</td>
                     <td>Дата рождения</td>
                     <td>Дата обучения</td>
                     <td>Факультет</td>
-                </tr>
+                    <td>Курс</td>
+            </thead>
+            <tbody id="tbody">
             </tbody>
         </table>
-
-        <br>
-        <input type="text" id="surnameSort" placeholder="Сортировка по фамилии">
+        
+        <input type="text" id="FIOName" placeholder="Фамилия">
+        <input type="text" id="FIOSurname" placeholder="Имя">
+        <input type="text" id="FIOLastname" placeholder="Отчество">
+        <input type="date" id="bDate" placeholder="Дата рождения">
+        <input type="number" id="learnStartDate" placeholder="Дата поступления">
+        <input type="number" id="learnEndDate" placeholder="Дата окончания">
+        <input type="text" id="fackultet" placeholder="Факультет">
+        <input type="text" id="course" placeholder="Курс">
+        <button type="button" id="addStudent" class="btn btn-primary">Add</button>
+        
     </div>
 </body>
 </html>
