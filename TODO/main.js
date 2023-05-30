@@ -137,7 +137,7 @@ import { fetchPatch } from './patch.js';
             id: 0
           }
 
-          let itemId = await fetchPost  (objItem)
+          let itemId = await fetchPost(objItem);
 
           //обнуляем значение в поле, чтобы не пришлось стирать его вручную
           todoItemForm.input.value = '';
