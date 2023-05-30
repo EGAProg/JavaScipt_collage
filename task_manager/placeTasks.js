@@ -13,6 +13,7 @@ export function placeTask(taskPlace, input, name, counter) {
         let lstorage = new Storage(input.value);   
         let outValue = input.value;
         arrayOfObj.push(lstorage)
+        count = 0;
         localStorage.setItem(name, JSON.stringify(arrayOfObj)); //send array of Objects to localStorage
         for (let i = 0; i < arrayOfObj.length; i++) {
             localStorage.setItem(counter, count+1);
@@ -20,4 +21,6 @@ export function placeTask(taskPlace, input, name, counter) {
         console.log(input.value)
         input.value = '';
         controlBtns(name, arrayOfObj, lstorage, outValue);
+
+        
 }

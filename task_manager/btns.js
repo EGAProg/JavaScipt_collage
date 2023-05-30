@@ -1,4 +1,7 @@
 import { Storage } from "./obsConstructor.js";
+import { fetchDelete } from "./delete.js";
+import { fetchPatch } from "./patch.js";
+
 export function controlBtns(name, array, obj, input) {
     let counterName = ("Counter"+name);
     let taskDel  = document.querySelectorAll('#btnDel');
@@ -12,6 +15,7 @@ export function controlBtns(name, array, obj, input) {
                 let counter = JSON.parse(localStorage.getItem(counterName));
                 parseInt(counter);
                 counter -= 1;
+                let count = 0;
                 localStorage.removeItem(counterName);
                 if (count < 0) {
                     count = 0;
@@ -25,7 +29,7 @@ export function controlBtns(name, array, obj, input) {
                 let removed = array.splice(indexArray, 1);
                 console.log(array);
                 localStorage.setItem(name, JSON.stringify(removed));
-                
+                fetchDelete(this.parentElement.parentElement[i])
             }
         }
     }
@@ -36,6 +40,8 @@ export function controlBtns(name, array, obj, input) {
             localStorage.removeItem(name);
             let holder = new Storage(input, true);
             localStorage.setItem(name, JSON.stringify(holder));
+            fetchPatch(this.parentElement.parentElement[i],{done:true})
         }
     }
+    
 }

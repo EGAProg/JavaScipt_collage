@@ -22,6 +22,8 @@ let daylyObj = [
     }
 ];
 
+
+
 export function createToDo(ownerName, tName) {
     let counter = ("Counter"+ownerName)
     Body.innerHTML += `
@@ -51,4 +53,5 @@ export function createToDo(ownerName, tName) {
         placeTask(taskPlace, placeholder, ownerName);
         btnPlace.setAttribute("disabled", "disabled");
     });
+    
 }

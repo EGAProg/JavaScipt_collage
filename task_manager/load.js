@@ -55,4 +55,5 @@ export function loadTasks(name, daylyarr=null) { // ERR:Cannot read properties o
             console.error(ex);
         }
     }
+    
 };
