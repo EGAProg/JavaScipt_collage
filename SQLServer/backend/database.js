@@ -1,6 +1,7 @@
-const API_ADDR = "https://localhost:3306"
 const mysql = require("mysql2");
 const express = require("express");
+
+const app = express();
 
 const pool = mysql.createPool({
     connectionLimit: 5,
@@ -9,3 +10,4 @@ const pool = mysql.createPool({
     database: "site",
     password: "ytevt.ghblevsdfnmgfhjkb"
 });
+
