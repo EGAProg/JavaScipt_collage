@@ -33,7 +33,7 @@ export function logic(wrapper, timerID) {
         }
     } );
     
-    timerID = setTimeout(() => {
+    let timerId = setTimeout(() => {
         alert('Время игры закончилось');
         
         window.location.reload();
