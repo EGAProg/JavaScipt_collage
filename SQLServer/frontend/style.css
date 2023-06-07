@@ -1,21 +1,25 @@
-main {
+body {
+    
+    width:100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    gap: 8px;
-    padding: 0 40% 0 40%;
 }
 
-.controls {
-    display: flex;
+table, td {
+    border: 1px solid #333;
+    display: table-cell;
+    vertical-align: inherit;
+    
+}
+#trHead {
+    border: 1px solid #333;
+    vertical-align: inherit;
+    font-weight: bold;
+    
 }
 
-.item-list {
-    display: flex;
-    flex-direction: column;
-}
-
-.item {
-    display: flex;
-    gap: 4px;
+thead, tfoot {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
 }

@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title></title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="style.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script type="text/javascript" src="./main.js" defer></script>
+    <title>Document</title>
 </head>
-
 <body>
-    <script src="index.js" type="module" defer></script>
-    <main>
-        <div class="controls">
-            <input type="text" id="item-text" />
-            <button id="submit-btn">Добавить</button>
-        </div>
-        <div id="items">
-            <div id="items-container" class="item-list"></div>
-        </div>
-    </main>
+    <div class="Wrapper">
+        
+        <table id="table_id">
+            <thead>
+                <th>ФИО</th>
+                <th>Дата рождения</th>
+                <th>Дата обучения</th>
+                <th>Факультет</th>
+                <th>Курс</th>
+            </thead>
+            <tbody id="tbody">
+                
+            </tbody>
+        </table>
+        
+        <input type="text" id="FIOName" placeholder="Фамилия">
+        <input type="text" id="FIOSurname" placeholder="Имя">
+        <input type="text" id="FIOLastname" placeholder="Отчество">
+        <input type="date" id="bDate" placeholder="Дата рождения">
+        <input type="number" id="learnStartDate" placeholder="Дата поступления">
+        <input type="number" id="learnEndDate" placeholder="Дата окончания">
+        <input type="text" id="fackultet" placeholder="Факультет">
+        <input type="text" id="course" placeholder="Курс">
+        <button type="button" id="addStudent" class="btn btn-primary">Add</button>
+        <div><input type="text" id="findInput"  placeholder="Поиск..."></div>
+    </div>
 </body>
-
 </html>

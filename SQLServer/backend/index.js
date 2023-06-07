@@ -1,8 +1,7 @@
 import express from "express";
-import bodyParser from "body-parser";
-import createRoute from "./routes/post.js";
-import getRoute from "./routes/get.js";
-import deleteRoute from "./routes/delete.js";
+import createRoute from "./imports/post.js";
+import getRoute from "./imports/get.js";
+import deleteRoute from "./imports/delete.js";
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));

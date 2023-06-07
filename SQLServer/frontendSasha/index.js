@@ -1,4 +1,4 @@
-import { getItems, createItem, deleteItem } from "./api.js";
+import { getItems, createItem, deleteItem } from "../frontend/api.js";
 
 const inputEl = document.querySelector("#item-text");
 const submitEl = document.querySelector("#submit-btn");
