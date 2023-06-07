@@ -36,6 +36,7 @@ function handler() {
     });
 }
 
+
 // function buttonClick() {}
 
 
@@ -64,6 +65,7 @@ function _main_(){
 //     buttonCreate("Block");
 //     buttonCreate("Unblock");
 //     click();
+    console.log(ret);
     handler();
 }
 _main_();
