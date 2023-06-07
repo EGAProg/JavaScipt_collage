@@ -27,30 +27,6 @@ function createTd(tableEl, text) {
     tableEl.append(td);
 }
 
-function findStudent() {    
-    let filter, table, tr, td, i, txtValue;
-    
-    filter = findStud.value.toUpperCase();
-    table = document.getElementById("table_id");
-    tr = table.getElementsByTagName("tr");
-  
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
-    }
-}
-
-function getFullName(student) {
-    return student.surname + "\n" + student.name + "\n";
-}
-
 function fillTable(obj = {}) {
     let tr = document.createElement("tr");
     tBody.append(tr);
@@ -60,15 +36,11 @@ function fillTable(obj = {}) {
     createTd(tr, obj.age);
 }
 
-
-function main() {
-    for (let i = 0; i < studbecker.length; i++) {
-        fillTable(studbecker[i]);
-    }
+for (let i = 0; i < studbecker.length; i++) {
+    fillTable(studbecker[i]);
 }
-main();
-document.addEventListener('DOMContentLoaded', () => {
 
+document.addEventListener('DOMContentLoaded', () => {
     const getSort = ({ target }) => {
         const order = (target.dataset.order = -(target.dataset.order || -1));
         const index = [...target.parentNode.cells].indexOf(target);
@@ -77,15 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
             a.children[index].innerHTML,
             b.children[index].innerHTML
         );
-
         for(const tBody of target.closest('table').tBodies)
             tBody.append(...[...tBody.rows].sort(comparator(index, order)));
 
         for(const cell of target.parentNode.cells)
             cell.classList.toggle('sorted', cell === target);
     };
-
     document.querySelectorAll('#table_id thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
-
 });
 
