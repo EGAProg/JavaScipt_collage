@@ -1,4 +1,5 @@
 let tBody = document.getElementById("tbody");
+let thTags = document.getElementsByTagName("th");
 
 let studbecker = [
     {
@@ -36,25 +37,29 @@ function fillTable(obj = {}) {
     createTd(tr, obj.age);
 }
 
+function sortTable(colIndex, ascending) {
+    let rows = Array.from(tBody.querySelectorAll("tr"));
+    rows.sort((a, b) => {
+        let aVal = a.cells[colIndex].textContent;
+        let bVal = b.cells[colIndex].textContent;
+        if (ascending) {
+            return aVal.localeCompare(bVal);
+        } else {
+            return bVal.localeCompare(aVal);
+        }
+    });
+    tBody.innerHTML = "";
+    rows.forEach(row => tBody.appendChild(row));
+}
+
 for (let i = 0; i < studbecker.length; i++) {
     fillTable(studbecker[i]);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const getSort = ({ target }) => {
-        const order = (target.dataset.order = -(target.dataset.order || -1));
-        const index = [...target.parentNode.cells].indexOf(target);
-        const collator = new Intl.Collator(['en', 'ru'], { numeric: true });
-        const comparator = (index, order) => (a, b) => order * collator.compare(
-            a.children[index].innerHTML,
-            b.children[index].innerHTML
-        );
-        for(const tBody of target.closest('table').tBodies)
-            tBody.append(...[...tBody.rows].sort(comparator(index, order)));
-
-        for(const cell of target.parentNode.cells)
-            cell.classList.toggle('sorted', cell === target);
-    };
-    document.querySelectorAll('#table_id thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
-});
-
+for (let i = 0; i < thTags.length; i++) {
+    let ascending = true;
+    thTags[i].addEventListener("click", () => {
+        sortTable(i, ascending);
+        ascending = !ascending;
+    });
+}
