@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Переводы</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1 class="user">Users</h1>
+    <select name="accounts" id="acc"></select>
+
+    <div calss="sendEth">
+      <input type="number" name="sendEth" class="input" id="sendMoney">
+      <input type="password" name="codePass" id="keySend">
+      <select name="accounts" id="resiever"></select>
+      <button onClick="sendMoney()">Отправить</button>
+    </div>
+
+    <div class="canselTrade">
+      <input type="password" class="setNum" id="KeyDecline">
+      <button class="addBtn" onClick="canselTransaction()">Отменить отправку</button>
+    </div>
+
+    <div class="confirmTrade">
+      <input type="password" class="setNum" value="Key Code" id="KeyGet">
+      <button class="addBtn" onClick="getTransaction()">Получить транзакцию</button>
+    </div>
+    <div class="history">
+      <h1>HISTORY</h1>
+      <span class="hisSpan"></span>
+    </div>
+    <script src="web3.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
