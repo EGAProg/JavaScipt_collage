@@ -1,2 +1,38 @@
-body {
+input {
+    height: 46px;
+    width: 400px;
+    margin-top: 25px;
+}
+.root {
+    padding: 25px;
+    margin-top: 25px;
+    margin: auto;
+    width: 1000px;
+}
+.users {
+    margin-top: 20px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    
+}
+.sendEth {
+    margin-top: 20px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.canselTrade {
+    margin-top: 20px;
+}
+
+.confirmTrade {
+    margin-top: 20px;
+}
+
+.history {
+    margin-top: 20px;
 }
