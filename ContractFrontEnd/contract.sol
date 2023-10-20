@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >= 0.7.0 < 0.9.0;
+
+//import "hardhat/console.sol";
+
 contract transaction {
     struct Users{
         address addr;
@@ -28,17 +31,11 @@ contract transaction {
     Users[] public users;
     
     mapping(address => Users) private user;
-    //mapping(string => Transaction) private transaction;
     mapping(string => PremakeTransaction) private premakeTransactions;
 
-    // struct TransactionMapAddr {
-    //     uint256 id;
-    //     mapping(string => Transaction) transaction;
-    // }
-    //TransactionMapAddr[] public transactionsAddr;
-    constructor() { 
+    constructor() payable { 
         // Заранее заготовленные переводы
-        //premakeTransactions["Present"] = PremakeTransaction("Present", 0x17F6AD8Ef982297579C203069C1DbfFE4348c372, (0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2, 20);
+        //premakeTransactions["Present"] = PremakeTransaction("Present", 0x17F6AD8Ef982297579C203069C1DbfFE4348c372, 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2, 20);
 
         // Пользователи
         user[0x5B38Da6a701c568545dCfcB03FcB875f56beddC4] = Users(0x5B38Da6a701c568545dCfcB03FcB875f56beddC4, "Ivan", true);
@@ -48,15 +45,16 @@ contract transaction {
         user[0x617F2E2fD72FD9D5503197092aC168c91465E7f2] = Users(0x617F2E2fD72FD9D5503197092aC168c91465E7f2, "Kirill", false);
         user[0x17F6AD8Ef982297579C203069C1DbfFE4348c372] = Users(0x17F6AD8Ef982297579C203069C1DbfFE4348c372, "Vova", false);
     }
-    
-    // 
-
+    function calcTransaction() public view returns(Transaction[] memory){
+        return(transactions);
+    }
     function Deposit(uint id, string memory _keyCode, address _Resiever) public payable {
         //require(user[msg.sender]); // Затравочка на то, что переводить могут только зарегестрированные пользователи
         require(msg.value > 0, "0 in Value");
         transactions.push(Transaction(id, _keyCode, msg.sender, _Resiever, msg.value,  false));
+        //console.log("&s", transactions[id].resiever);
     }
-
+    //192.168.66.38:3000
     function CancelTransaction(uint id, string memory _keyCode) public payable{
         require(transactions[id].confermed == false);
         require(keccak256(abi.encodePacked(_keyCode)) == keccak256(abi.encodePacked(transactions[id].keyWord)));
@@ -64,20 +62,20 @@ contract transaction {
         payable(msg.sender).transfer(transactions[id].value); 
     }
     
-    function PreMake(string memory _Type) public payable { // Заготовка для заготовленных транзакций
-        payable(premakeTransactions[_Type].resiever).transfer(premakeTransactions[_Type].value);
-    }
+    // function PreMake(string memory _Type) public payable { // Заготовка для заготовленных транзакций
+    //     payable(premakeTransactions[_Type].resiever).transfer(premakeTransactions[_Type].value);
+    // }
 
     function getTransact(uint id, string memory _keyCode) public payable {
-        require(msg.sender == transactions[id].resiever);
-        require(transactions[id].value > 0, "0 in value");
+        require(false == transactions[id].confermed, "Transaction hase been complited");
+        require(msg.sender == transactions[id].resiever, "Not a resiever of this transaction");
         if (keccak256(abi.encodePacked(_keyCode)) == keccak256(abi.encodePacked(transactions[id].keyWord))) {
-            payable(msg.sender).transfer(transactions[id].value);
-            
+            payable(msg.sender).transfer(transactions[id].value);   
+            //console.log("Transaction resieved");
         }
         else {
-            
             payable(transactions[id].sender).transfer(transactions[id].value); // Доработать возврат средств при неправильном ключе
+            //console.log("Transaction not resieved");
         }
         transactions[id].confermed = true;
     }

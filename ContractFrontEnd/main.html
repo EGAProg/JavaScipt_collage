@@ -13,6 +13,7 @@
         <h1 class="user">Users</h1>
         <br>
         <select name="accounts" id="acc"></select>
+        <br>
         <span id="spanBalance" default="???"></span>
       </div>
       <div calss="sendEth">
@@ -25,18 +26,16 @@
         <span>Key Code: </span>
         <br>
         <select name="accounts" id="resiever"></select>
-        <button onClick="sendMoney()" class="btn btn-primary addBtn">Отправить</button>
+        <button id="btnSend" onClick="sendMoney" class="btn btn-primary addBtn">Отправить</button>
       </div>
 
       <div class="canselTrade">
         <input type="password" class="setNum" id="KeyDecline">
-        <button class="btn btn-primary addBtn" onClick="canselTransaction()">Отменить отправку</button>
+        <button id="btnCansel" class="btn btn-primary addBtn" onClick="canselTransaction">Отменить отправку</button>
       </div>
-
-      <div class="confirmTrade">
-        <input type="password" class="setNum" id="KeyGet">
-        <button class="btn btn-primary addBtn" onClick="getTransaction()">Получить транзакцию</button>
-      </div>
+      
+      <div class="innerTrade"></div>
+      
       <div class="history">
         <h1>HISTORY</h1>
         <span class="hisSpan">
@@ -44,6 +43,6 @@
       </div>
     </div>
     <script src="web3.min.js"></script>
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
   </body>
 </html>
