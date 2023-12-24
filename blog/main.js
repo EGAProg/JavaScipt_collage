@@ -4,6 +4,7 @@ fetch('https://gorest.co.in/public-api/posts?page=1').then(response => response.
         const li = document.createElement('li');
         const link = document.createElement('a');
         link.href = `post.html?id=${article.id}`;
+	console.log(article.id);
         link.textContent = article.title;
         li.appendChild(link);
         articlesList.appendChild(li);
