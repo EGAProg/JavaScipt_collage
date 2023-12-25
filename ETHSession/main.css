@@ -1,0 +1,20 @@
+.Wrapper {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 1200px;
+}
+
+.toNewRTA {
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(102, 102, 253);
+    border: 1px solid rgb(102, 102, 253);
+    border-radius: 5px;
+    width: 130px;
+}
+
+.toNewRTA a {
+    text-decoration: none;
+    margin: 0 auto;
+    color:#fff;
+}
