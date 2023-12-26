@@ -26,7 +26,7 @@ const Body = () => {
                 const response = await axios.get(url, {
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-API-KEY': 'efbddea9-b642-4e34-85bd-c635514825e0', // API KEY
+                        'X-API-KEY': 'YOUR API HERE', // API KEY
                     },
                 });
                 console.log(response);
