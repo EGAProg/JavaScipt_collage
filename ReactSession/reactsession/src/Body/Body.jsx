@@ -15,13 +15,7 @@ const Body = () => {
             setLoading(true);
             try {
                 let url;
-                if (!searchQuery) {
-                    // Отрисовка при пустом поиске
-                    url = `http://kinopoiskapiunofficial.tech/api/v2.2/films/top?page=${currentPage}`;
-                } else {
-                    // Отрисовка при активном поиске
-                    url = `http://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${encodeURIComponent(searchQuery)}&page=${currentPage}`;
-                }
+                !searchQuery ? url = `http://kinopoiskapiunofficial.tech/api/v2.2/films/top?page=${currentPage}` : url = `http://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${encodeURIComponent(searchQuery)}&page=${currentPage}`;
 
                 const response = await axios.get(url, {
                     headers: {
@@ -44,7 +38,6 @@ const Body = () => {
     if (isLoading) return <div>Loading...</div>;
     if (error) return <div>Error fetching data: {error.message}</div>;
     
-
     // Переход по страницам
     const goToNextPage = () => setCurrentPage((page) => page + 1);
     const goToPreviousPage = () => setCurrentPage((page) => page - 1);
@@ -59,13 +52,8 @@ const Body = () => {
         <div className={BodyCss.wrapper}>
             <h1>Кинопоиск</h1>
             <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Найти фильм"
-                    className={BodyCss.searchFilm}
-                />
-                    <button type="submit" className={[BodyCss.btn, BodyCss.searchBtn].join(" ")}>Поиск</button>
+                <input type="text" name="search" placeholder="Найти фильм" className={BodyCss.searchFilm} />
+                <button type="submit" className={[BodyCss.btn, BodyCss.searchBtn].join(" ")}>Поиск</button>
             </form>
             <div className={BodyCss.Page}>
                 {movies.map((movie) => (
